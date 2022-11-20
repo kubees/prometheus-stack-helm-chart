@@ -1,2 +1,14 @@
 kube-prometheus-stack:
   grafana:
+    sidecar:
+      dashboards:
+        enabled: true
+        label: grafana_dashboard
+        searchNamespace: ALL
+  prometheus:
+    prometheusSpec:
+      serviceMonitorSelectorNilUsesHelmValues: false
+    thanosService:
+      enabled: true
+    thanosServiceMonitor:
+      enabled: true
