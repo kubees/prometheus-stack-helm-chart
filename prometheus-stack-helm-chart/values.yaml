@@ -1,2 +1,18 @@
 kube-prometheus-stack:
   grafana:
+    admin:
+      existingSecret: grafana-secret
+      userKey: username
+      passwordKey: password
+    sidecar:
+      dashboards:
+        enabled: true
+        label: grafana_dashboard
+        searchNamespace: ALL
+  prometheus:
+    prometheusSpec:
+      serviceMonitorSelectorNilUsesHelmValues: false
+    thanosService:
+      enabled: true
+    thanosServiceMonitor:
+      enabled: true
