@@ -1,5 +1,7 @@
 kube-prometheus-stack:
   grafana:
+    service:
+      type: LoadBalancer
     admin:
       existingSecret: grafana-secret
       userKey: username
